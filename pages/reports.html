@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>통계/보고서 - 차량 A/S ERP 시스템</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>차량 A/S ERP 시스템</h1>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">홈</a></li>
+                    <li><a href="service.html">A/S 접수</a></li>
+                    <li><a href="inventory.html">재고 관리</a></li>
+                    <li><a href="customer.html">고객 관리</a></li>
+                    <li><a href="reports.html">통계/보고서</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+            <section class="reports">
+                <h2>통계/보고서</h2>
+                
+                <div class="report-filters">
+                    <div class="form-group">
+                        <label for="reportPeriod">기간 선택</label>
+                        <select id="reportPeriod">
+                            <option value="today">오늘</option>
+                            <option value="week">이번 주</option>
+                            <option value="month">이번 달</option>
+                            <option value="year">이번 년도</option>
+                            <option value="custom">기간 지정</option>
+                        </select>
+                    </div>
+                    <div class="custom-date-range" style="display: none;">
+                        <input type="date" id="startDate">
+                        <span>~</span>
+                        <input type="date" id="endDate">
+                    </div>
+                </div>
+                
+                <div class="report-cards">
+                    <div class="report-card">
+                        <h3>A/S 접수 현황</h3>
+                        <div class="chart-container">
+                            <canvas id="serviceChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="report-card">
+                        <h3>수익 현황</h3>
+                        <div class="chart-container">
+                            <canvas id="revenueChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="report-card">
+                        <h3>부품 사용량</h3>
+                        <div class="chart-container">
+                            <canvas id="partsChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="report-card">
+                        <h3>고객 방문 통계</h3>
+                        <div class="chart-container">
+                            <canvas id="customerChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="detailed-reports">
+                    <h3>상세 보고서</h3>
+                    <div class="report-tabs">
+                        <button class="tab-btn active" data-tab="service">A/S 현황</button>
+                        <button class="tab-btn" data-tab="revenue">수익 현황</button>
+                        <button class="tab-btn" data-tab="inventory">재고 현황</button>
+                    </div>
+                    
+                    <div class="report-content">
+                        <div id="serviceReport" class="tab-content active">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>날짜</th>
+                                        <th>A/S 유형</th>
+                                        <th>건수</th>
+                                        <th>총 금액</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="serviceReportBody">
+                                    <!-- JavaScript로 데이터가 동적으로 추가됩니다 -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div id="revenueReport" class="tab-content">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>날짜</th>
+                                        <th>수익</th>
+                                        <th>비용</th>
+                                        <th>순이익</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="revenueReportBody">
+                                    <!-- JavaScript로 데이터가 동적으로 추가됩니다 -->
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div id="inventoryReport" class="tab-content">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>부품명</th>
+                                        <th>사용량</th>
+                                        <th>재고량</th>
+                                        <th>재주문 필요</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="inventoryReportBody">
+                                    <!-- JavaScript로 데이터가 동적으로 추가됩니다 -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/reports.js"></script>
+</body>
+</html> 

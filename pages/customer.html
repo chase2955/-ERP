@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고객 관리 - 차량 A/S ERP 시스템</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>차량 A/S ERP 시스템</h1>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">홈</a></li>
+                    <li><a href="service.html">A/S 접수</a></li>
+                    <li><a href="inventory.html">재고 관리</a></li>
+                    <li><a href="customer.html">고객 관리</a></li>
+                    <li><a href="reports.html">통계/보고서</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+            <section class="customer-form">
+                <h2>고객 등록/수정</h2>
+                <form id="customerForm">
+                    <input type="hidden" id="customerId">
+                    <div class="form-group">
+                        <label for="customerName">고객명</label>
+                        <input type="text" id="customerName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customerPhone">연락처</label>
+                        <input type="tel" id="customerPhone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="carModel">차량 모델</label>
+                        <input type="text" id="carModel" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="carNumber">차량 번호</label>
+                        <input type="text" id="carNumber" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customerNotes">비고</label>
+                        <textarea id="customerNotes"></textarea>
+                    </div>
+                    
+                    <div class="form-buttons">
+                        <button type="button" onclick="saveCustomer()">저장</button>
+                        <button type="reset">초기화</button>
+                    </div>
+                </form>
+            </section>
+            
+            <section class="customer-list">
+                <h2>고객 목록</h2>
+                <div class="search-box">
+                    <input type="text" id="searchCustomer" placeholder="고객명, 연락처, 차량번호로 검색" onkeyup="searchCustomers()">
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>고객명</th>
+                            <th>연락처</th>
+                            <th>차량 모델</th>
+                            <th>차량 번호</th>
+                            <th>최근 방문일</th>
+                            <th>방문 횟수</th>
+                            <th>총 이용 금액</th>
+                            <th>비고</th>
+                            <th>관리</th>
+                        </tr>
+                    </thead>
+                    <tbody id="customerList">
+                        <!-- JavaScript로 데이터가 동적으로 추가됩니다 -->
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+    <script src="../js/customer.js"></script>
+</body>
+</html> 

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>재고 관리 - 차량 A/S ERP 시스템</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>차량 A/S ERP 시스템</h1>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">홈</a></li>
+                    <li><a href="service.html">A/S 접수</a></li>
+                    <li><a href="inventory.html">재고 관리</a></li>
+                    <li><a href="customer.html">고객 관리</a></li>
+                    <li><a href="reports.html">통계/보고서</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+            <section class="inventory-form">
+                <h2>재고 등록/수정</h2>
+                <form id="inventoryForm">
+                    <input type="hidden" id="editIndex" value="-1">
+                    <div class="form-group">
+                        <label for="partName">부품명</label>
+                        <input type="text" id="partName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="partNumber">부품 번호</label>
+                        <input type="text" id="partNumber" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="category">카테고리</label>
+                        <select id="category" required>
+                            <option value="">선택하세요</option>
+                            <option value="engine">엔진 부품</option>
+                            <option value="brake">브레이크 부품</option>
+                            <option value="suspension">서스펜션</option>
+                            <option value="electrical">전기 부품</option>
+                            <option value="body">차체 부품</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="quantity">수량</label>
+                        <input type="number" id="quantity" min="0" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="price">단가</label>
+                        <input type="number" id="price" min="0" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="supplier">공급업체</label>
+                        <input type="text" id="supplier" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="minimumStock">최소 재고량</label>
+                        <input type="number" id="minimumStock" min="0" required>
+                    </div>
+                    
+                    <div class="form-buttons">
+                        <button type="submit" id="submitBtn">등록하기</button>
+                        <button type="button" id="cancelBtn" style="display: none;">취소</button>
+                    </div>
+                </form>
+            </section>
+            
+            <section class="stock-process">
+                <h2>재고 입출고</h2>
+                <form id="stockForm">
+                    <div class="form-group">
+                        <label for="stockPartNumber">부품 번호</label>
+                        <input type="text" id="stockPartNumber" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="stockQuantity">수량</label>
+                        <input type="number" id="stockQuantity" min="1" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="stockReason">사유</label>
+                        <input type="text" id="stockReason" required>
+                    </div>
+                    
+                    <div class="form-buttons">
+                        <button type="button" onclick="processStock('입고')">입고</button>
+                        <button type="button" onclick="processStock('출고')">출고</button>
+                    </div>
+                </form>
+            </section>
+            
+            <section class="inventory-list">
+                <h2>재고 현황</h2>
+                <div class="inventory-actions">
+                    <div class="search-box">
+                        <input type="text" id="searchInventory" placeholder="부품명 또는 부품 번호로 검색">
+                    </div>
+                    <div class="filter-box">
+                        <select id="categoryFilter">
+                            <option value="">전체 카테고리</option>
+                            <option value="engine">엔진 부품</option>
+                            <option value="brake">브레이크 부품</option>
+                            <option value="suspension">서스펜션</option>
+                            <option value="electrical">전기 부품</option>
+                            <option value="body">차체 부품</option>
+                        </select>
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>부품명</th>
+                            <th>부품 번호</th>
+                            <th>카테고리</th>
+                            <th>수량</th>
+                            <th>단가</th>
+                            <th>공급업체</th>
+                            <th>마지막 입출고일</th>
+                            <th>관리</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inventoryList">
+                        <!-- JavaScript로 데이터가 동적으로 추가됩니다 -->
+                    </tbody>
+                </table>
+            </section>
+            
+            <section class="stock-history">
+                <h2>입출고 내역</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>날짜</th>
+                            <th>부품명</th>
+                            <th>부품 번호</th>
+                            <th>구분</th>
+                            <th>수량</th>
+                            <th>사유</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stockHistoryBody">
+                        <!-- JavaScript로 데이터가 동적으로 추가됩니다 -->
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+    <script src="../js/inventory.js"></script>
+</body>
+</html> 
