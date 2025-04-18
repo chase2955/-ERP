@@ -3,105 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>차량 A/S 관리 시스템</title>
+    <title>차량 A/S ERP 시스템</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <nav class="sidebar">
-            <div class="logo">
-                <h2>차량 A/S 관리</h2>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#dashboard" class="active"><i class="fas fa-home"></i> 대시보드</a></li>
-                <li><a href="#customers"><i class="fas fa-users"></i> 고객 관리</a></li>
-                <li><a href="#repairs"><i class="fas fa-wrench"></i> 수리 작업</a></li>
-                <li><a href="#inventory"><i class="fas fa-boxes"></i> 부품 재고</a></li>
-                <li><a href="#employees"><i class="fas fa-user-tie"></i> 직원 관리</a></li>
-                <li><a href="#reports"><i class="fas fa-chart-bar"></i> 보고서</a></li>
+    <header>
+        <h1>차량 A/S ERP 시스템</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">홈</a></li>
+                <li><a href="service.html">사고/정비 접수</a></li>
+                <li><a href="inventory.html">재고 관리</a></li>
             </ul>
         </nav>
-        
-        <main class="main-content">
-            <header>
-                <div class="header-content">
-                    <h1>대시보드</h1>
-                    <div class="user-info">
-                        <span class="user-name">관리자</span>
-                        <i class="fas fa-user-circle"></i>
-                    </div>
-                </div>
-            </header>
+    </header>
 
-            <div class="dashboard">
-                <div class="stats-container">
-                    <div class="stat-card">
-                        <i class="fas fa-tools"></i>
-                        <div class="stat-info">
-                            <h3>진행중인 작업</h3>
-                            <p class="stat-number">12</p>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <i class="fas fa-clock"></i>
-                        <div class="stat-info">
-                            <h3>대기중인 작업</h3>
-                            <p class="stat-number">5</p>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <i class="fas fa-check-circle"></i>
-                        <div class="stat-info">
-                            <h3>완료된 작업</h3>
-                            <p class="stat-number">128</p>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <i class="fas fa-won-sign"></i>
-                        <div class="stat-info">
-                            <h3>이번달 매출</h3>
-                            <p class="stat-number">₩15,280,000</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="recent-repairs">
-                    <h2>최근 수리 내역</h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>작업번호</th>
-                                <th>고객명</th>
-                                <th>차량정보</th>
-                                <th>작업내용</th>
-                                <th>상태</th>
-                                <th>예상완료일</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>#12345</td>
-                                <td>홍길동</td>
-                                <td>현대 아반떼 CN7</td>
-                                <td>정기점검</td>
-                                <td><span class="status in-progress">진행중</span></td>
-                                <td>2024-03-22</td>
-                            </tr>
-                            <tr>
-                                <td>#12344</td>
-                                <td>김철수</td>
-                                <td>기아 K5 DL3</td>
-                                <td>엔진오일 교체</td>
-                                <td><span class="status completed">완료</span></td>
-                                <td>2024-03-21</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+    <main>
+        <section class="dashboard">
+            <div class="card">
+                <h2>오늘의 접수 현황</h2>
+                <p id="todayServiceCount">0건</p>
             </div>
-        </main>
-    </div>
+            <div class="card">
+                <h2>진행 중 작업</h2>
+                <p id="ongoingServiceCount">0건</p>
+            </div>
+            <div class="card">
+                <h2>재고 알림</h2>
+                <p id="inventoryAlert">0개</p>
+            </div>
+        </section>
+
+        <section class="quick-actions">
+            <h2>빠른 작업</h2>
+            <div class="action-buttons">
+                <button onclick="location.href='service.html'">새 접수</button>
+                <button onclick="location.href='inventory.html'">재고 확인</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 차량 A/S ERP 시스템. All rights reserved.</p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html> 

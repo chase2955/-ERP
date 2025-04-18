@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>재고 관리 - 차량 A/S ERP 시스템</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>차량 A/S ERP 시스템</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">홈</a></li>
+                <li><a href="service.html">사고/정비 접수</a></li>
+                <li><a href="inventory.html" class="active">재고 관리</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="inventory-controls">
+            <h2>재고 관리</h2>
+            <div class="search-bar">
+                <input type="text" id="searchItem" placeholder="부품명 검색">
+                <button onclick="searchInventory()">검색</button>
+            </div>
+            <button class="add-item-btn" onclick="showAddItemForm()">새 부품 추가</button>
+        </section>
+
+        <section class="inventory-form" id="addItemForm" style="display: none;">
+            <h3>새 부품 추가</h3>
+            <form id="itemForm">
+                <div class="form-group">
+                    <label for="itemName">부품명</label>
+                    <input type="text" id="itemName" required>
+                </div>
+                <div class="form-group">
+                    <label for="itemCode">부품 코드</label>
+                    <input type="text" id="itemCode" required>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">수량</label>
+                    <input type="number" id="quantity" required min="0">
+                </div>
+                <div class="form-group">
+                    <label for="price">단가</label>
+                    <input type="number" id="price" required min="0">
+                </div>
+                <div class="form-group">
+                    <label for="category">카테고리</label>
+                    <select id="category" required>
+                        <option value="">선택하세요</option>
+                        <option value="engine">엔진 부품</option>
+                        <option value="brake">브레이크 부품</option>
+                        <option value="electrical">전기 부품</option>
+                        <option value="body">차체 부품</option>
+                    </select>
+                </div>
+                <button type="submit">추가</button>
+                <button type="button" onclick="hideAddItemForm()">취소</button>
+            </form>
+        </section>
+
+        <section class="inventory-list">
+            <h3>재고 현황</h3>
+            <div class="filter-options">
+                <select id="categoryFilter">
+                    <option value="all">전체 카테고리</option>
+                    <option value="engine">엔진 부품</option>
+                    <option value="brake">브레이크 부품</option>
+                    <option value="electrical">전기 부품</option>
+                    <option value="body">차체 부품</option>
+                </select>
+            </div>
+            <table id="inventoryTable">
+                <thead>
+                    <tr>
+                        <th>부품명</th>
+                        <th>부품 코드</th>
+                        <th>수량</th>
+                        <th>단가</th>
+                        <th>카테고리</th>
+                        <th>관리</th>
+                    </tr>
+                </thead>
+                <tbody id="inventoryList">
+                    <!-- 재고 목록이 여기에 동적으로 추가됩니다 -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 차량 A/S ERP 시스템. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
